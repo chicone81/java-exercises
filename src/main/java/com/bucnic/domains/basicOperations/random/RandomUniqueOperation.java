@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUniqueOperation implements StatefulOperation<Integer,String> {
-    private final int MAX_NUMBER = 100;
     private String result;
 
     @Override
@@ -15,6 +14,7 @@ public class RandomUniqueOperation implements StatefulOperation<Integer,String> 
         HashSet<Integer> uniqueNumbers = new HashSet<>();
 
         while (uniqueNumbers.size() < numberToGenerate){
+            int MAX_NUMBER = 100;
             int number = ThreadLocalRandom.current().nextInt(MAX_NUMBER);
             uniqueNumbers.add(number);
         }
