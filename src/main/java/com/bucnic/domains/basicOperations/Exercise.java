@@ -9,7 +9,8 @@ public enum Exercise {
     StringConcatenate(2,"String Concatenate"),
     Array(3,"Array operations"),
     Map(4,"Map occurrences"),
-    Random(5,"Get random numbers")
+    Random(5,"Get random numbers"),
+    Person(6,"Person class")
     ;
 
     private final int value;

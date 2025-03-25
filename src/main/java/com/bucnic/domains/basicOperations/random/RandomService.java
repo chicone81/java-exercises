@@ -20,10 +20,10 @@ public class RandomService {
     }
 
     public void Process(){
-        this.outputHandler.WriteLine("Insert the max number to randomize");
+        this.outputHandler.writeLine("Insert the max number to randomize");
         int numberToGenerate;
         try{
-            numberToGenerate = Integer.parseInt(this.inputHandler.ReadStrings());
+            numberToGenerate = Integer.parseInt(this.inputHandler.readStrings());
         } catch (NumberFormatException e) {
             throw new RuntimeException(e);
         }
@@ -41,6 +41,6 @@ public class RandomService {
                     .append(operation.getResult());
         }
 
-        this.outputHandler.WriteLine(operationResult.toString());
+        this.outputHandler.writeLine(operationResult.toString());
     }
 }

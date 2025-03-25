@@ -8,7 +8,12 @@ public class ScannerInputHandler implements InputHandler {
     private final Scanner scanner = new Scanner(System.in);
 
     @Override
-    public String ReadStrings() {
+    public String readStrings() {
         return scanner.nextLine();
     }
+
+//    @Override
+//    public void close(){
+//        scanner.close();
+//    }
 }

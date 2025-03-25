@@ -5,6 +5,8 @@ import com.bucnic.domains.basicOperations.Calculator;
 import com.bucnic.domains.basicOperations.Exercise;
 import com.bucnic.domains.basicOperations.map.*;
 import com.bucnic.domains.basicOperations.StringConcatenator;
+import com.bucnic.domains.basicOperations.people.PeopleService;
+import com.bucnic.domains.basicOperations.people.PeopleServiceRequest;
 import com.bucnic.domains.basicOperations.random.RandomClassicOperation;
 import com.bucnic.domains.basicOperations.random.RandomService;
 import com.bucnic.domains.basicOperations.random.RandomSortedOperation;
@@ -43,6 +45,9 @@ public class Main {
                         break;
                     case Random:
                         RandomizeNumbers();
+                        break;
+                    case Person:
+                        PersonHandler(scanner);
                         break;
                     case null:
                         System.out.println("Bye!");
@@ -120,6 +125,8 @@ public class Main {
 
         var wordService = new WordService(input, separator, output, operation);
         wordService.Process();
+
+        //input.close();
     }
 
     private static void RandomizeNumbers() {
@@ -132,8 +139,45 @@ public class Main {
 
         var randomService = new RandomService(input, output, operations);
         randomService.Process();
+
+        //input.close();
     }
 
+    private static void PersonHandler(Scanner scanner) {
+        var running = true;
+        var input = new ScannerInputHandler();
+        var output = new ConsoleOutputHandler();
+
+        var peopleService = new PeopleService(input,output);
+
+        while (running) {
+            //peopleService.printPeople(new PeopleServiceRequest());
+
+            output.writeLine("\n--- MENU ---");
+            output.writeLine("1. Aggiungi persona");
+            output.writeLine("2. Mostra elenco");
+            output.writeLine("3. Esci");
+            output.writeLine("Scelta: ");
+
+            String scelta = scanner.nextLine();
+
+            switch (scelta) {
+                case "1":
+                    peopleService.addPerson();
+                    break;
+                case "2":
+                    peopleService.printPeople(new PeopleServiceRequest(true));
+                    break;
+                case "3":
+                    running = false;
+                    break;
+                default:
+                    output.writeLine("Wrong choice!");
+            }
+        }
+
+        //input.close();
+    }
 
     // *****************************************************************
 }

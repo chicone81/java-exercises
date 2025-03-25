@@ -23,15 +23,15 @@ public class WordService {
     }
 
     public void Process(){
-        this.outputHandler.WriteLine("insert a lot words separated by space");
+        this.outputHandler.writeLine("insert a lot words separated by space");
 
-        String line = this.inputHandler.ReadStrings();
+        String line = this.inputHandler.readStrings();
         var input = Arrays.asList(line.split(separator));
 
         operation.execute(input);
         var operationResult = operation.getResult();
 
-        this.outputHandler.WriteLine("Operation results: ");
-        operationResult.forEach((word,count) -> outputHandler.WriteLine(word + " -> " + count));
+        this.outputHandler.writeLine("Operation results: ");
+        operationResult.forEach((word,count) -> outputHandler.writeLine(word + " -> " + count));
     }
 }
